@@ -9,6 +9,6 @@ const packages = readdirSync(resolve(__dirname, 'packages'))
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   prompt: {
-    scopes: packages,
+    scopes: [...packages, 'playground'],
   },
 }
