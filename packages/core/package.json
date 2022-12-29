@@ -1,0 +1,25 @@
+{
+  "name": "@plasticine-monitor/core",
+  "version": "0.0.0",
+  "author": "Plasticine-Yang",
+  "description": "A frontend monitor system.",
+  "license": "MIT",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "frontend monitor system"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "test": "vitest"
+  }
+}

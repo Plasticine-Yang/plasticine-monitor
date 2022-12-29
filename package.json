@@ -7,6 +7,9 @@
   "type": "module",
   "keywords": [],
   "scripts": {
+    "dev": "pnpm -C packages/core stub",
+    "build": "pnpm -C packages/core build",
+    "play": "pnpm -C playground dev",
     "commit": "cz",
     "up": "taze -wI",
     "prepare": "husky install"
