@@ -1,12 +1,12 @@
-import { Sender } from '../sender'
+import type { Context } from '../types'
 import { monitorError } from './error'
 
 /**
  * @description 初始化所有监视器
  */
-function setupMonitors(sender: Sender) {
+function setupMonitors(ctx: Context) {
   // 监控 JS 异常
-  monitorError(sender)
+  monitorError(ctx)
 }
 
 export { setupMonitors }

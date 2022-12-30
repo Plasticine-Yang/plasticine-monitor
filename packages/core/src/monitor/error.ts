@@ -1,9 +1,11 @@
-import { Sender } from '../sender'
+import { Context } from '../types'
 
 /**
  * @description 监视 JS 异常
  */
-function monitorError(sender: Sender) {
+function monitorError(ctx: Context) {
+  const { sender } = ctx
+
   window.addEventListener('error', ev => {
     sender.send(ev)
   })
