@@ -7,8 +7,9 @@
   "type": "module",
   "keywords": [],
   "scripts": {
-    "dev": "pnpm -C packages/core stub",
-    "build": "pnpm -C packages/core build",
+    "build:core": "pnpm -C packages/core build",
+    "dev:server": "pnpm -C packages/server start:dev",
+    "test:server": "pnpm -C packages/server test",
     "play": "pnpm -C playground dev",
     "commit": "cz",
     "up": "taze -wI",
