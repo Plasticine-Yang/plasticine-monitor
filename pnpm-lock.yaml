@@ -39,7 +39,10 @@ importers:
       vitest: 0.26.2
 
   packages/core:
-    specifiers: {}
+    specifiers:
+      '@plasticine-monitor/shared': workspace:^0.0.0
+    dependencies:
+      '@plasticine-monitor/shared': link:../shared
 
   playground:
     specifiers:

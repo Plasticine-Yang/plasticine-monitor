@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["ESNext", "DOM"],
@@ -13,7 +12,11 @@
     "strictNullChecks": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "@plasticine-monitor/*": ["packages/*/src"]
+    }
   },
   "include": ["packages/**/*.ts"],
   "exclude": ["node_modules"]

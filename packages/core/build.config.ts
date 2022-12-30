@@ -1,5 +1,8 @@
-// eslint-disable-next-line import/no-unresolved
 import { defineBuildConfig } from 'unbuild'
+
+import pkg from './package.json'
+
+const externals = Object.keys(pkg.dependencies)
 
 export default defineBuildConfig({
   entries: ['./src/index'],
@@ -9,4 +12,5 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
+  externals,
 })
