@@ -1,24 +1,16 @@
-interface InitOptions {
-  /** @description 监控平台 url */
-  platformURL?: string
-}
+import { setupConfigManager } from './config-manager'
+import { defaultInitConfig } from './config-manager/default-config'
+import { setupMonitors } from './monitor'
+import { setupSender } from './sender'
 
-function init(options: InitOptions = {}) {
-  const { platformURL } = options
+import type { InitConfig } from './types'
 
-  // 监听 error 事件处理 JS 运行错误、语法错误、图片、CSS 等资源加载错误
-  window.addEventListener('error', () => {
-    console.log('监听到 JS 运行错误、语法错误、图片、CSS 等资源加载错误')
-  })
+function init(config: InitConfig = defaultInitConfig) {
+  const { senderConfig } = setupConfigManager(config)
 
-  // 监听异步错误
-  window.addEventListener('unhandledrejection', () => {
-    console.log('监听到异步错误')
-  })
+  const sender = setupSender(senderConfig)
 
-  console.log(
-    `SDK initialization completed. Subsequent data will be sent to: ${platformURL}`,
-  )
+  setupMonitors(sender)
 }
 
 export { init }

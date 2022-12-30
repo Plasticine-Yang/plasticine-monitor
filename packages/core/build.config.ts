@@ -1,9 +1,5 @@
 import { defineBuildConfig } from 'unbuild'
 
-import pkg from './package.json'
-
-const externals = Object.keys(pkg.dependencies)
-
 export default defineBuildConfig({
   entries: ['./src/index'],
   outDir: 'dist',
@@ -12,5 +8,4 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
-  externals,
 })
