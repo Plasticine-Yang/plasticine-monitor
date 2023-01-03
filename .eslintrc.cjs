@@ -12,5 +12,6 @@ module.exports = {
   },
   rules: {
     'import/no-unresolved': 'off',
+    'no-debugger': 'off',
   },
 }
