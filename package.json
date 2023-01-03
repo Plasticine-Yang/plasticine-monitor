@@ -8,6 +8,7 @@
   "keywords": [],
   "scripts": {
     "build:core": "pnpm -C packages/core build",
+    "build:shared": "pnpm -C packages/shared build",
     "dev:server": "pnpm -C packages/server start:dev",
     "test:server": "pnpm -C packages/server test",
     "play": "pnpm -C playground dev",
