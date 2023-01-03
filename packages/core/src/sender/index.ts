@@ -1,17 +1,27 @@
+import { CreateRuntimeErrorDto } from '@plasticine-monitor/shared'
+
+import { api } from '../api'
+import { axiosInstanceManager } from '../api/axios'
 import type { SenderConfig } from './types'
 
 class Sender {
-  private platformURL: string
-
   constructor(senderConfig: SenderConfig) {
     const { platformURL } = senderConfig
 
-    this.platformURL = platformURL
+    axiosInstanceManager.initAxiosInstance(platformURL)
   }
 
   send(payload: any) {
-    console.log(`上报数据到 ${this.platformURL}`)
-    console.log('payload:', payload)
+    if (payload instanceof ErrorEvent) {
+      const runtimeError: CreateRuntimeErrorDto = {
+        errorMessage: payload.message,
+        rowNo: payload.lineno,
+        colNo: payload.colno,
+      }
+
+      console.log('上报异常，生成的 payload 为:', runtimeError)
+      api.runtimeError.reportRuntimeErrorInfo(runtimeError)
+    }
   }
 }
 
