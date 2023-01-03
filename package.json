@@ -14,7 +14,9 @@
     "play": "pnpm -C playground dev",
     "commit": "cz",
     "up": "taze -wI",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "changeset": "changeset",
+    "changeset:version": "changeset version"
   },
   "config": {
     "commitizen": {
