@@ -1,7 +1,7 @@
 import { init } from '@plasticine-monitor/core'
 
 init({
-  platformURL: 'http://localhost:8080',
+  platformURL: 'http://localhost:5173/api',
 })
 
 const $root = document.getElementById('root')!
