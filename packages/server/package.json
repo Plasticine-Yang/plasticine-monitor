@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-monitor/server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "backend server for @plasticine-monitor/core package.",
   "author": "Plasticine-Yang",
   "private": true,
