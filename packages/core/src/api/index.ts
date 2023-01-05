@@ -4,5 +4,4 @@ const api = {
   runtimeError: apiRuntimeError,
 }
 
-export { initAxiosInstance } from './axios'
 export { api }
