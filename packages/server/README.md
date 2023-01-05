@@ -23,3 +23,11 @@ MONGODB_CONFIG:
   logging: false
   synchronize: true
 ```
+
+### 2. deploy
+
+```shell
+pnpm build:server
+```
+
+将构建产物放到服务器上，通过 `node src/main.js` 启动即可

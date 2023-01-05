@@ -9,6 +9,7 @@
   "scripts": {
     "build:core": "pnpm -C packages/core build",
     "build:shared": "pnpm -C packages/shared build",
+    "build:server": "pnpm -C packages/server build",
     "dev:server": "pnpm -C packages/server start:dev",
     "test:server": "pnpm -C packages/server test",
     "play": "pnpm -C playground dev",
