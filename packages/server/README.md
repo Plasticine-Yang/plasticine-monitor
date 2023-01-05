@@ -1,6 +1,6 @@
-# nest-gateway
+# @plasticine-monitor/server
 
-An api gateway system powered by NestJS.
+前端监控系统后端服务
 
 ## Usage
 
