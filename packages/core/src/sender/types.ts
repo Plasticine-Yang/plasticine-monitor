@@ -2,7 +2,7 @@ type Action<Payload = any, ReturnValue = any> = (
   payload: Payload,
 ) => ReturnValue
 
-type Actions = Record<any, Action>
+type Actions = Record<string, Action>
 
 /**
  * @description 提取 Actions 中 action 的 payload 类型
