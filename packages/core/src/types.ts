@@ -1,12 +1,12 @@
-import { Sender } from './sender'
+import { Core } from './core'
 
-interface InitConfig {
+interface CoreConfig {
   /** @description 监控平台 url */
   platformURL?: string
 }
 
-interface Context {
-  sender: Sender
+interface Plugin {
+  install: (instance: Core) => void
 }
 
-export type { InitConfig, Context }
+export type { CoreConfig, Plugin }

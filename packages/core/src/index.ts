@@ -1,1 +1,1 @@
-export { init } from './sdk'
+export { Core } from './core'
