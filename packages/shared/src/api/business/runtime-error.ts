@@ -1,7 +1,6 @@
-import {
-  CreateRuntimeErrorDto,
-  RUNTIME_ERROR_ROUTES,
-} from '@plasticine-monitor/shared'
+import type { CreateRuntimeErrorDto, RuntimeError } from '../types'
+
+import { RUNTIME_ERROR_ROUTES } from '../routes'
 
 import { request } from '../request'
 
@@ -21,7 +20,7 @@ export const getRuntimeErrorList = async () => {
 export const reportRuntimeErrorInfo = async (
   runtimeError: CreateRuntimeErrorDto,
 ) => {
-  const [err, data] = await request.post(
+  const [err, data] = await request.post<CreateRuntimeErrorDto, RuntimeError>(
     RUNTIME_ERROR_ROUTES.REPORT_RUNTIME_ERROR,
     runtimeError,
     null,

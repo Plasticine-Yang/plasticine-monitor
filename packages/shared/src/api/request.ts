@@ -1,8 +1,8 @@
-import { BusinessResponse } from '@plasticine-monitor/shared'
+import { BusinessResponse } from './types'
 
 import type { Method } from 'axios'
 
-import { axiosInstanceManager, AxiosInstanceManager } from './axios'
+import { axiosInstanceManager, AxiosInstanceManager } from '../axios'
 
 type ResponsePreprocessor<T = unknown> = (
   businessResponse: BusinessResponse<T>,

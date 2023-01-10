@@ -22,9 +22,5 @@
     "build": "unbuild",
     "stub": "unbuild --stub",
     "test": "vitest"
-  },
-  "dependencies": {
-    "@plasticine-monitor/shared": "workspace:*",
-    "axios": "^1.2.2"
   }
 }
