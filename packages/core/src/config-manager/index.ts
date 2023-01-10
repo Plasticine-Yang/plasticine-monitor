@@ -1,46 +1,41 @@
-import type { InitConfig } from '../types'
-import type { ResolvedConfig } from './types'
-import { defaultInitConfig } from './default-config'
 import { SenderConfig } from '../sender/types'
+import type { CoreConfig } from '../types'
+import { defaultInitConfig } from './default-config'
 
-function setupConfigManager(initConfig: InitConfig): ResolvedConfig {
-  const resolvedInitConfig = resolveInitConfigWithDefaults(initConfig)
+class ConfigManager {
+  private resolvedInitConfig: Required<CoreConfig>
+  private senderConfig: SenderConfig
 
-  const resolvedConfig: ResolvedConfig = {
-    senderConfig: resolveSenderConfig(resolvedInitConfig),
+  constructor(private initConfig: CoreConfig) {
+    this.resolvedInitConfig = this.resolveInitConfigWithDefaults()
+    this.senderConfig = this.resolveSenderConfig()
   }
 
-  return resolvedConfig
-}
+  private resolveInitConfigWithDefaults(): Required<CoreConfig> {
+    const resolvedConfig = Object.assign({}, this.initConfig)
 
-/**
- * @description 配置缺失时使用默认配置替代
- * @param initConfig InitConfig
- */
-const resolveInitConfigWithDefaults = (
-  initConfig: InitConfig,
-): Required<InitConfig> => {
-  const resolvedConfig = Object.assign({}, initConfig)
+    Object.entries(resolvedConfig).forEach(([key, value]) => {
+      // 使用默认值替代未传入的配置项
+      if (!value) {
+        this.initConfig[key as keyof CoreConfig] =
+          defaultInitConfig[key as keyof CoreConfig]
+      }
+    })
 
-  Object.entries(resolvedConfig).forEach(([key, value]) => {
-    // 使用默认值替代未传入的配置项
-    if (!value) {
-      initConfig[key as keyof InitConfig] =
-        defaultInitConfig[key as keyof InitConfig]
+    return resolvedConfig as Required<CoreConfig>
+  }
+
+  private resolveSenderConfig(): SenderConfig {
+    const { platformURL } = this.resolvedInitConfig
+
+    return {
+      platformURL,
     }
-  })
+  }
 
-  return resolvedConfig as Required<InitConfig>
-}
-
-function resolveSenderConfig(
-  resolvedInitConfig: Required<InitConfig>,
-): SenderConfig {
-  const { platformURL } = resolvedInitConfig
-
-  return {
-    platformURL,
+  public getSenderConfig(): SenderConfig {
+    return this.senderConfig
   }
 }
 
-export { setupConfigManager }
+export { ConfigManager }
