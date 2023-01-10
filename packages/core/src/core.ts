@@ -1,26 +1,32 @@
-import type { CoreConfig, Plugin } from './types'
 import type { Actions } from './sender/types'
+import type { Plugin } from './types'
 
 import { ConfigManager } from './config-manager'
 import { Sender } from './sender'
 
-class Core<ActionsType extends Actions = Actions> {
-  private configManager: ConfigManager
-  private plugins: Plugin[] = []
+class Core<
+  Config extends Record<string, any> = Record<string, any>,
+  ActionsType extends Actions = Actions,
+> {
+  protected configManager: ConfigManager<Config>
   public sender: Sender<ActionsType>
 
-  constructor(protected config: CoreConfig) {
-    this.configManager = new ConfigManager(this.config)
-    this.sender = new Sender<ActionsType>(this.configManager.getSenderConfig())
+  constructor(rawConfig: Config, defaultConfig: Required<Config>) {
+    this.configManager = new ConfigManager(rawConfig, defaultConfig)
+    this.sender = new Sender<ActionsType>()
+    this.onNetworkRequesterInit()
   }
+
+  /**
+   * @description 网络请求初始化钩子
+   */
+  protected onNetworkRequesterInit() {}
 
   /**
    * @description 注册插件
    */
-  public use() {
-    this.plugins.forEach(plugin => {
-      plugin.install(this as Core<any>)
-    })
+  public use(plugin: Plugin) {
+    plugin.install(this as Core<Config, any>)
   }
 }
 

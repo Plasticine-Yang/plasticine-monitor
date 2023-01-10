@@ -1,10 +1,6 @@
-import type { CoreConfig } from '../types'
-
 import { Core } from '../core'
 
 describe('core', () => {
-  const coreConfig: CoreConfig = { platformURL: '' }
-
   test('should work with sender', () => {
     interface ActionResponse<T = any> {
       code: number
@@ -17,7 +13,7 @@ describe('core', () => {
       'network-error': (payload: string) => ActionResponse<string>
     }
 
-    const core = new Core<Actions>(coreConfig)
+    const core = new Core<Record<string, never>, Actions>({}, {})
     let jsError = ''
     let networkError = ''
 
