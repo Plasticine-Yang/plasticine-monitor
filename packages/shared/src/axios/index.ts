@@ -1,7 +1,7 @@
-import {
-  BusinessResponse,
-  SUCCESS_BUSINESS_API_CODE,
-} from '@plasticine-monitor/shared'
+import type { BusinessResponse } from '../api/types'
+
+import { SUCCESS_BUSINESS_API_CODE } from '../api/constants'
+
 import axios, { AxiosInstance } from 'axios'
 
 import {
