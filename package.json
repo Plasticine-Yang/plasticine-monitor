@@ -11,6 +11,7 @@
     "build:shared": "pnpm -C packages/shared build",
     "build:server": "pnpm -C packages/server build",
     "dev:server": "pnpm -C packages/server start:dev",
+    "test:core": "pnpm -C packages/core test",
     "test:server": "pnpm -C packages/server test",
     "play": "pnpm -C playground dev",
     "commit": "cz",
