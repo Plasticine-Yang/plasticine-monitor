@@ -9,7 +9,7 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@plasticine-monitor/core": "workspace:*"
+    "@plasticine-monitor/browser": "workspace:*"
   },
   "devDependencies": {
     "vite": "^4.0.3"

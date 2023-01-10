@@ -1,7 +1,7 @@
-import { init } from '@plasticine-monitor/core'
+import { WebSDK } from '@plasticine-monitor/browser'
 
-init({
-  platformURL: 'http://localhost:5173/api',
+new WebSDK({
+  senderURL: 'http://localhost:5173/api',
 })
 
 const $root = document.getElementById('root')!
