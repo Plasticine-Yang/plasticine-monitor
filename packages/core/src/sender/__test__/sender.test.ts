@@ -1,12 +1,8 @@
-import type { Actions, SenderConfig } from '../types'
+import type { Actions } from '../types'
 
 import { Sender } from '..'
 
 describe('sender', () => {
-  const senderConfig: SenderConfig = {
-    platformURL: '',
-  }
-
   test('should support call action chaining', async () => {
     interface ActionResponse<T = any> {
       code: number
@@ -19,7 +15,7 @@ describe('sender', () => {
       'network-error': (payload: string) => ActionResponse<string>
     }
 
-    const sender = new Sender<ActionsType>(senderConfig)
+    const sender = new Sender<ActionsType>()
     const res = {
       jsError: '',
       networkError: '',

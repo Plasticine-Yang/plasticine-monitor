@@ -1,7 +1,3 @@
-interface SenderConfig {
-  platformURL: string
-}
-
 type Action<Payload = any, ReturnValue = any> = (
   payload: Payload,
 ) => ReturnValue
@@ -29,7 +25,6 @@ type ExtractActionReturnType<
   : never
 
 export type {
-  SenderConfig,
   Action,
   Actions,
   ExtractActionPayloadType,

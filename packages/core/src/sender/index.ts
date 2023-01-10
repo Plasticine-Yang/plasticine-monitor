@@ -1,20 +1,7 @@
-import type {
-  Action,
-  Actions,
-  ExtractActionPayloadType,
-  SenderConfig,
-} from './types'
-
-import { axiosInstanceManager } from '../api/axios'
+import type { Action, Actions, ExtractActionPayloadType } from './types'
 
 class Sender<ActionsType extends Actions = Actions> {
   private actionMap = new Map<keyof ActionsType, Action>()
-
-  constructor(senderConfig: SenderConfig) {
-    const { platformURL } = senderConfig
-
-    axiosInstanceManager.initAxiosInstance(platformURL)
-  }
 
   /**
    * @description 注册 action -- action 用于描述发送行为
