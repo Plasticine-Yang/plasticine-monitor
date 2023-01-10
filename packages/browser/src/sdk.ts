@@ -11,18 +11,16 @@ import { actions } from './actions'
 class WebSDK extends Core<WebSDKConfig, ActionsType> {
   constructor(config: WebSDKConfig) {
     super(config, defaultWebSDKConfig)
-    this.registerSenderActions()
+
+    // 批量注册 sender actions
+    this.sender.batchRegisterActions(actions)
+
+    // 注册插件
     this.registerPlugins()
   }
 
   private registerPlugins() {
     runtimeErrorPlugin.install(this)
-  }
-
-  private registerSenderActions() {
-    for (const [type, action] of Object.entries(actions)) {
-      this.sender.action(type as keyof ActionsType, action)
-    }
   }
 
   /**

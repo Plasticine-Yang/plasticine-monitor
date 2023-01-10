@@ -4,7 +4,7 @@ class Sender<ActionsType extends Actions = Actions> {
   private actionMap = new Map<keyof ActionsType, Action>()
 
   /**
-   * @description 注册 action -- action 用于描述发送行为
+   * @description 注册单个 action -- action 用于描述发送行为
    * @param type action type
    * @param action action
    */
@@ -13,6 +13,19 @@ class Sender<ActionsType extends Actions = Actions> {
     action: Action<T, R>,
   ): void {
     this.actionMap.set(type, action)
+  }
+
+  /**
+   * @description 批量注册 actions
+   * @param actions 所有 actions
+   */
+  public batchRegisterActions(actions: ActionsType) {
+    for (const [type, action] of Object.entries(actions)) {
+      this.action(
+        type as keyof ActionsType,
+        action as ActionsType[keyof ActionsType],
+      )
+    }
   }
 
   public action<ActionKey extends keyof ActionsType>(
