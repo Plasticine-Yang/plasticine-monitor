@@ -8,7 +8,7 @@
   "keywords": [],
   "scripts": {
     "dev:server": "pnpm -C packages/server start:dev",
-    "build": "run-p build:shared build:server build:core build:browser",
+    "build": "run-p build:shared build:core build:browser",
     "build:core": "pnpm -C packages/core build",
     "build:browser": "pnpm -C packages/browser build",
     "build:shared": "pnpm -C packages/shared build",
