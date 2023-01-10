@@ -38,13 +38,11 @@ importers:
       unbuild: 1.0.2
       vitest: 0.26.2
 
+  packages/browser:
+    specifiers: {}
+
   packages/core:
-    specifiers:
-      '@plasticine-monitor/shared': workspace:*
-      axios: ^1.2.2
-    dependencies:
-      '@plasticine-monitor/shared': link:../shared
-      axios: 1.2.2
+    specifiers: {}
 
   packages/server:
     specifiers:
