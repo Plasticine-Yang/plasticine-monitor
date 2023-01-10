@@ -1,7 +1,7 @@
 import { Core } from './core'
 
-interface Plugin {
-  install: (instance: Core) => void
+interface Plugin<T extends Core<any, any> = Core> {
+  install: (instance: T) => void
 }
 
 export type { Plugin }
