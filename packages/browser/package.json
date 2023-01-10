@@ -19,6 +19,10 @@
     "frontend monitor system",
     "browser"
   ],
+  "dependencies": {
+    "@plasticine-monitor/core": "workspace:*",
+    "@plasticine-monitor/shared": "workspace:*"
+  },
   "scripts": {
     "build": "unbuild",
     "stub": "unbuild --stub",
