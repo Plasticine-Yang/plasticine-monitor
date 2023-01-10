@@ -1,4 +1,3 @@
-import type { Actions } from '@plasticine-monitor/core'
 import type { BusinessResponse } from '@plasticine-monitor/shared'
 import type {
   RuntimeErrorActionPayload,
@@ -7,7 +6,7 @@ import type {
 
 import { api } from '@plasticine-monitor/shared'
 
-interface ActionsType extends Actions {
+type ActionsType = {
   /** @description 运行时错误 */
   'runtime-error': (
     payload: RuntimeErrorActionPayload,
