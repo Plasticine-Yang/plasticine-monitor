@@ -1,5 +1,12 @@
 # @plasticine-monitor/browser
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @plasticine-monitor/core@0.0.3
+
 ## 0.0.1
 
 ### Patch Changes
