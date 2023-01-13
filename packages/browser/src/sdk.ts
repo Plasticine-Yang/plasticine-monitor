@@ -20,7 +20,7 @@ class WebSDK extends Core<WebSDKConfig, ActionsType> {
   }
 
   private registerPlugins() {
-    runtimeErrorPlugin.install(this)
+    this.use(runtimeErrorPlugin)
   }
 
   /**
