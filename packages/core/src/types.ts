@@ -1,6 +1,4 @@
-import { Core } from './core'
-
-interface Plugin<T extends Core<any, any> = Core> {
+interface Plugin<T = unknown> {
   install: (instance: T) => void
 }
 

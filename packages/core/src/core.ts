@@ -25,8 +25,8 @@ class Core<
   /**
    * @description 注册插件
    */
-  public use(plugin: Plugin) {
-    plugin.install(this as Core<Config, any>)
+  public use(plugin: Plugin<typeof this>) {
+    plugin.install(this)
   }
 }
 
