@@ -8,10 +8,10 @@ class ConfigManager<T extends Record<string, any> = Record<string, any>> {
   private resolveConfig(): Required<T> {
     const resolvedConfig = { ...this.rawConfig }
 
-    Object.entries(resolvedConfig).forEach(([key, value]) => {
+    Object.entries(this.defaultConfig).forEach(([key, value]) => {
       // 使用默认值替代未传入的配置项
-      if (!value) {
-        this.rawConfig[key as keyof T] = this.defaultConfig[key as keyof T]
+      if (resolvedConfig[key] === undefined) {
+        resolvedConfig[key as keyof T] = value
       }
     })
 
