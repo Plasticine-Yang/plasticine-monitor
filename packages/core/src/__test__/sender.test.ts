@@ -1,6 +1,6 @@
-import type { Actions } from '../types'
+import type { Actions } from '../sender/types'
 
-import { Sender } from '..'
+import { Sender } from '../sender'
 
 describe('sender', () => {
   test('should support call action chaining', async () => {
