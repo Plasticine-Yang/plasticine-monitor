@@ -21,6 +21,7 @@
   "scripts": {
     "build": "unbuild",
     "stub": "unbuild --stub",
+    "type-check": "tsc",
     "test": "vitest"
   },
   "dependencies": {
