@@ -1,2 +1,2 @@
 export * from './common'
-export * from './runtime-error'
+export * from './error'

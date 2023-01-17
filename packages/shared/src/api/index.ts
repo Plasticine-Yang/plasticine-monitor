@@ -1,7 +1,7 @@
-import * as apiRuntimeError from './business/runtime-error'
+import * as apiError from './business/error'
 
 const api = {
-  runtimeError: apiRuntimeError,
+  error: apiError,
 }
 
 export { api }
