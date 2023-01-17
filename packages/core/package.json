@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-monitor/core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Plasticine-Yang",
   "description": "A frontend monitor system.",
   "type": "module",

@@ -1,5 +1,12 @@
 # @plasticine-monitor/core
 
+## 0.0.4
+
+### Patch Changes
+
+- test(core): add unit test for config-manager -- should resolve config with default value
+- fix(core): fix not resolve config with default value
+
 ## 0.0.3
 
 ### Patch Changes
