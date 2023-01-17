@@ -19,8 +19,8 @@ class Request {
   request<RequestBody = unknown, ResponseData = unknown>(
     url: string,
     method: Method,
-    body: RequestBody | null,
-    params: Record<string, string | number> | null,
+    body?: RequestBody,
+    params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
     return new Promise(resolve => {
@@ -44,7 +44,7 @@ class Request {
 
   get<ResponseData = unknown>(
     url: string,
-    params: Record<string, string | number> | null,
+    params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
     return this.request(url, 'GET', null, params, responsePreprocessor)
@@ -52,8 +52,8 @@ class Request {
 
   post<RequestBody = unknown, ResponseData = unknown>(
     url: string,
-    body: RequestBody | null,
-    params: Record<string, string | number> | null,
+    body?: RequestBody,
+    params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
     return this.request(url, 'POST', body, params, responsePreprocessor)
@@ -61,8 +61,8 @@ class Request {
 
   delete<RequestBody = unknown, ResponseData = unknown>(
     url: string,
-    body: RequestBody | null,
-    params: Record<string, string | number> | null,
+    body?: RequestBody,
+    params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
     return this.request(url, 'DELETE', body, params, responsePreprocessor)
@@ -70,8 +70,8 @@ class Request {
 
   put<RequestBody = unknown, ResponseData = unknown>(
     url: string,
-    body: RequestBody | null,
-    params: Record<string, string | number> | null,
+    body?: RequestBody,
+    params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
     return this.request(url, 'PUT', body, params, responsePreprocessor)
@@ -79,8 +79,8 @@ class Request {
 
   patch<RequestBody = unknown, ResponseData = unknown>(
     url: string,
-    body: RequestBody | null,
-    params: Record<string, string | number> | null,
+    body?: RequestBody,
+    params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
     return this.request(url, 'PATCH', body, params, responsePreprocessor)
