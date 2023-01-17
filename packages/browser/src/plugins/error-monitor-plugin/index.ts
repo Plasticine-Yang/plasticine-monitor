@@ -14,4 +14,7 @@ const errorMonitorPlugin = (): Plugin<WebSDK> => {
   }
 }
 
+const __TEMP__ = WebSDK
+console.log(__TEMP__)
+
 export { errorMonitorPlugin }

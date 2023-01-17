@@ -14,6 +14,6 @@ export default defineBuildConfig({
     emitCJS: true,
   },
   alias: {
-    '@': resolve(),
+    '@': resolve(__dirname, 'src'),
   },
 })
