@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "noEmit": true,
     "paths": {
       "@/*": ["packages/browser/src"],
       "@plasticine-monitor/*": ["packages/*/src"]
