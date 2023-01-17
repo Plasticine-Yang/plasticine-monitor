@@ -15,6 +15,7 @@
     "build:server": "pnpm -C packages/server build",
     "test:core": "pnpm -C packages/core test",
     "test:server": "pnpm -C packages/server test",
+    "type-check:browser": "pnpm -C packages/browser type-check",
     "play": "pnpm -C playground dev",
     "commit": "cz",
     "up": "taze -wI",
