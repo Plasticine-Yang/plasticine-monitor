@@ -1,5 +1,17 @@
 # @plasticine-monitor/browser
 
+## 0.0.3
+
+### Patch Changes
+
+- refactor(browser): use class ErrorMonitor to implement error report
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies
+  - @plasticine-monitor/core@0.0.4
+  - @plasticine-monitor/shared@0.0.2
+
 ## 0.0.2
 
 ### Patch Changes
