@@ -1,13 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "../..",
-    "composite": true,
+    "noEmit": true,
     "paths": {
       "@/*": ["packages/browser/src"],
       "@plasticine-monitor/*": ["packages/*/src"]
     }
   },
-  "include": ["../**/*"],
-  "exclude": ["../server", "**/node_modules/**"]
+  "include": ["src", "build.config.ts"]
 }

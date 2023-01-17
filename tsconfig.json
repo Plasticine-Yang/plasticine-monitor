@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "noEmit": true
-  },
-  "references": [{ "path": "packages/browser" }]
-}
