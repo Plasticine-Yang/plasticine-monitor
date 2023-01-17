@@ -5,7 +5,7 @@ import { Core } from '@plasticine-monitor/core'
 import { axiosInstanceManager } from '@plasticine-monitor/shared'
 
 import { defaultWebSDKConfig } from './config'
-import { runtimeErrorPlugin } from './plugins/runtime-error-plugin'
+import { errorMonitorPlugin } from './plugins'
 import { actions } from './actions'
 
 class WebSDK extends Core<WebSDKConfig, ActionsType> {
@@ -20,7 +20,10 @@ class WebSDK extends Core<WebSDKConfig, ActionsType> {
   }
 
   private registerPlugins() {
-    this.use(runtimeErrorPlugin)
+    this.use(
+      // 错误监控
+      errorMonitorPlugin(),
+    )
   }
 
   /**

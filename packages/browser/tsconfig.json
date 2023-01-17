@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../..",
+    "composite": true,
+    "paths": {
+      "@/*": ["packages/browser/src"],
+      "@plasticine-monitor/*": ["packages/*/src"]
+    }
+  },
+  "include": ["../**/*"],
+  "exclude": ["../server", "**/node_modules/**"]
+}

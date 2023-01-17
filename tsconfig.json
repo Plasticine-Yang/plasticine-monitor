@@ -1,23 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["vitest/globals"],
-    "baseUrl": ".",
-    "paths": {
-      "@plasticine-monitor/*": ["packages/*/src"]
-    }
+    "noEmit": true
   },
-  "include": ["packages/**/*.ts"],
-  "exclude": ["node_modules"]
+  "references": [{ "path": "packages/browser" }]
 }

@@ -1,9 +1,9 @@
-import { WebSDK } from '../sdk'
+import { WebSDK } from '@/sdk'
 
 /**
  * @description 监听运行时错误
  */
-function monitorRuntimeError(webSDK: WebSDK) {
+function monitorJSError(webSDK: WebSDK) {
   // 注册运行时错误上报的 sender action
   window.addEventListener('error', ev => {
     webSDK.sender.send('runtime-error', {
@@ -14,4 +14,4 @@ function monitorRuntimeError(webSDK: WebSDK) {
   })
 }
 
-export { monitorRuntimeError }
+export { monitorJSError }
