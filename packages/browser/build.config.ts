@@ -16,4 +16,5 @@ export default defineBuildConfig({
   alias: {
     '@': resolve(__dirname, 'src'),
   },
+  failOnWarn: false,
 })
