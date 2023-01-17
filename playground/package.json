@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-monitor/playground",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "author": "Plasticine-Yang",
   "description": "A frontend monitor system.",
