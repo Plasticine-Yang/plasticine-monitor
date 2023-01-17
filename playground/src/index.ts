@@ -1,7 +1,7 @@
 import { WebSDK } from '@plasticine-monitor/browser'
 
 new WebSDK({
-  senderURL: 'http://localhost:5173/api',
+  senderURL: `${new URL(import.meta.url).origin}/api`,
 })
 
 const $root = document.getElementById('root')!

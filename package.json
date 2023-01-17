@@ -19,6 +19,7 @@
     "type-check:browser": "pnpm -C packages/browser type-check",
     "type-check:shared": "pnpm -C packages/shared type-check",
     "play": "pnpm -C playground dev",
+    "play:mock": "pnpm -C playground dev:mock",
     "commit": "cz",
     "up": "taze -wI",
     "prepare": "husky install",
