@@ -17,6 +17,8 @@ class WebSDK extends Core<WebSDKConfig, ActionsType> {
 
     // 注册插件
     this.registerPlugins()
+
+    console.log('SDK 初始化完成')
   }
 
   private registerPlugins() {
