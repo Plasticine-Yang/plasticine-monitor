@@ -1,1 +1,0 @@
-export { shimsDirname } from './shims'
