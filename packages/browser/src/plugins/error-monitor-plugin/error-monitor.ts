@@ -5,6 +5,7 @@ class ErrorMonitor {
   constructor(private webSDK: WebSDK) {
     this.initJSErrorMonitor()
     this.initPromiseErrorMonitor()
+    this.initResourceErrorMonitor()
   }
 
   /**
@@ -38,6 +39,27 @@ class ErrorMonitor {
 
       this.webSDK.sender.send('report-error', payload)
     })
+  }
+
+  /**
+   * @description 监控资源加载错误
+   */
+  initResourceErrorMonitor() {
+    window.addEventListener(
+      'error',
+      (ev) => {
+        // 生成错误上报 payload
+        const payload: ReportErrorPayload = {
+          type: ev.type,
+          message: ev.message,
+          uid: this.genErrorUid(`${ev.type}-${ev.message}`),
+          stacktrace: 'stack',
+        }
+
+        this.webSDK.sender.send('report-error', payload)
+      },
+      { capture: true },
+    )
   }
 
   /**
