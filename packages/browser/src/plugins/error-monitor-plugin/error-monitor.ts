@@ -1,5 +1,5 @@
 import { WebSDK } from '@/sdk'
-import { ReportErrorPayload } from '@plasticine-monitor/shared'
+import { JSErrorPayload } from '@plasticine-monitor/shared'
 
 class ErrorMonitor {
   constructor(private webSDK: WebSDK) {
@@ -14,14 +14,15 @@ class ErrorMonitor {
   initJSErrorMonitor() {
     window.addEventListener('error', (ev) => {
       // 生成错误上报 payload
-      const payload: ReportErrorPayload = {
-        type: ev.type,
-        message: ev.message,
-        uid: this.genErrorUid(`${ev.type}-${ev.message}`),
-        stacktrace: 'stack',
+      const payload: JSErrorPayload = {
+        error: {
+          name: ev.type,
+          message: ev.message,
+          stacktrace: ev.error.stack ?? 'stacktrace',
+        },
       }
 
-      this.webSDK.sender.send('report-error', payload)
+      this.webSDK.sender.send('report-js-error', payload)
     })
   }
 
@@ -31,13 +32,14 @@ class ErrorMonitor {
   initPromiseErrorMonitor() {
     window.addEventListener('unhandledrejection', (ev) => {
       // 生成错误上报 payload
-      const payload: ReportErrorPayload = {
-        type: ev.type,
-        message: ev.reason,
-        uid: this.genErrorUid(`${ev.type}-${ev.reason}`),
+      const payload: JSErrorPayload = {
+        error: {
+          name: ev.type,
+          message: ev.reason,
+        },
       }
 
-      this.webSDK.sender.send('report-error', payload)
+      this.webSDK.sender.send('report-js-error', payload)
     })
   }
 
@@ -49,25 +51,18 @@ class ErrorMonitor {
       'error',
       (ev) => {
         // 生成错误上报 payload
-        const payload: ReportErrorPayload = {
-          type: ev.type,
-          message: ev.message,
-          uid: this.genErrorUid(`${ev.type}-${ev.message}`),
-          stacktrace: 'stack',
+        const payload: JSErrorPayload = {
+          error: {
+            name: ev.type,
+            message: ev.message,
+            stacktrace: 'stack',
+          },
         }
 
-        this.webSDK.sender.send('report-error', payload)
+        this.webSDK.sender.send('report-js-error', payload)
       },
       { capture: true },
     )
-  }
-
-  /**
-   * @description 为错误生成 uid
-   * @param error 序列化后的错误信息
-   */
-  genErrorUid(error: string) {
-    return btoa(decodeURIComponent(error))
   }
 }
 

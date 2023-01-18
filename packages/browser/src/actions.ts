@@ -1,21 +1,20 @@
 import type {
   BusinessResponse,
-  ReportErrorPayload,
-  ReportErrorPayloadWithId,
+  JSErrorPayload,
 } from '@plasticine-monitor/shared'
 
 import { api } from '@plasticine-monitor/shared'
 
 type ActionsType = {
-  /** @description 运行时错误 */
-  'report-error': (
-    payload: ReportErrorPayload,
-  ) => Promise<BusinessResponse<ReportErrorPayloadWithId> | null>
+  /** @description js-error */
+  'report-js-error': (
+    payload: JSErrorPayload,
+  ) => Promise<BusinessResponse<null> | null>
 }
 
 const actions: ActionsType = {
-  'report-error': async (payload) => {
-    return api.error.reportError(payload)
+  'report-js-error': async (payload) => {
+    return api.jsError.reportJSError(payload)
   },
 }
 
