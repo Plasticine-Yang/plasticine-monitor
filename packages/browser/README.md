@@ -4,4 +4,7 @@
 
 ## Features
 
+### 错误监控
+
 - [x] 监听 JavaScript 代码运行时错误
+- [x] 监听 Promise 错误
