@@ -2,45 +2,34 @@ import './style.css'
 
 import { WebSDK } from '@plasticine-monitor/browser'
 
+import { setupErrorMonitor } from './error-monitor'
+import { setupRequestMonitor } from './request-monitor'
+
 new WebSDK({
   senderURL: `${new URL(import.meta.url).origin}/api`,
 })
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div class="btn-group">
-    <button id="btn-js-error">emit js error</button>
-    <button id="btn-promise-error">emit promise error</button>
-    <button id="btn-resource-error">emit resource error</button>
+  <div class="container">
+    <section>
+      <h3>错误监控</h3>
+      <div class="btn-group">
+        <button id="btn-js-error">emit js error</button>
+        <button id="btn-promise-error">emit promise error</button>
+        <button id="btn-resource-error">emit resource error</button>
+        <button id="btn-xml-http-request-error">emit XMLHttpRequest error</button>
+        <button id="btn-fetch-error">emit fetch error</button>
+      </div>
+    </section>
+
+    <section>
+      <h3>请求监控</h3>
+      <div class="btn-group">
+        <button id="btn-normal-fetch">normal fetch</button>
+      </div>
+    </section>
   </div>
 `
 
-// trigger js error
-document
-  .querySelector<HTMLButtonElement>('#btn-js-error')!
-  .addEventListener('click', () => {
-    // @ts-ignore
-    undefinedFn()
-  })
-
-// trigger promise error
-document
-  .querySelector<HTMLButtonElement>('#btn-promise-error')!
-  .addEventListener('click', () => {
-    new Promise((_, reject) => {
-      reject('promise error')
-    })
-  })
-
-// trigger resource error
-document
-  .querySelector<HTMLButtonElement>('#btn-resource-error')!
-  .addEventListener('click', () => {
-    const $app = document.querySelector<HTMLDivElement>('#app')!
-    const $invalidImg = document.createElement('img')
-    $invalidImg.src = 'https://example.com/img.jpg'
-    $app.appendChild($invalidImg)
-
-    Promise.resolve().then(() => {
-      $invalidImg.remove()
-    })
-  })
+setupErrorMonitor()
+setupRequestMonitor()
