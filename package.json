@@ -21,6 +21,8 @@
     "lint": "eslint --ext .ts --fix packages",
     "play": "pnpm -C playground dev",
     "play:mock": "pnpm -C playground dev:mock",
+    "play:prod": "pnpm -C playground build && pnpm -C playground preview",
+    "play:prod-mock": "pnpm -C playground build && pnpm -C playground preview:mock",
     "commit": "cz",
     "up": "taze -wI",
     "prepare": "husky install",
