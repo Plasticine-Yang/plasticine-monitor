@@ -1,7 +1,7 @@
-import * as apiError from './business/error'
+import * as apiJSError from './business/js-error'
 
 const api = {
-  error: apiError,
+  jsError: apiJSError,
 }
 
 export { api }
