@@ -1,6 +1,6 @@
 # plasticine-monitor
 
-前端性能监控系统 -- 包含 SDK 和 后端服务实现
+前端性能监控系统 -- 包含 SDK 和 后端服务实现，可私有化部署
 
 ## Features
 
