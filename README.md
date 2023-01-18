@@ -95,20 +95,28 @@
 
 ## Usage
 
-启动后端服务器开发环境：
+1. 启动后端服务器开发环境：
 
 ```shell
 pnpm dev:server
 ```
 
-构建 SDK
+2. 构建 SDK
 
 ```shell
 pnpm build
 ```
 
-启动 playground 项目进行体验
+3. 启动 playground 项目进行体验
+
+开发环境
 
 ```shell
 pnpm play
+```
+
+生产环境
+
+```shell
+pnpm play:prod
 ```
