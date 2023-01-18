@@ -18,6 +18,7 @@
     "type-check:core": "pnpm -C packages/core type-check",
     "type-check:browser": "pnpm -C packages/browser type-check",
     "type-check:shared": "pnpm -C packages/shared type-check",
+    "lint": "eslint --ext .ts --fix packages",
     "play": "pnpm -C playground dev",
     "play:mock": "pnpm -C playground dev:mock",
     "commit": "cz",

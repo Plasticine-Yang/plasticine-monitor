@@ -7,7 +7,7 @@ class ErrorMonitor {
   }
 
   initJSErrorMonitor() {
-    window.addEventListener('error', ev => {
+    window.addEventListener('error', (ev) => {
       // 生成错误上报 payload
       const payload: ReportErrorPayload = {
         type: ev.type,

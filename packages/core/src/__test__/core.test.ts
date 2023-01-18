@@ -18,7 +18,7 @@ describe('core', () => {
     let networkError = ''
 
     core.sender
-      .action('js-error', payload => {
+      .action('js-error', (payload) => {
         jsError = payload
         return {
           code: 0,
@@ -26,7 +26,7 @@ describe('core', () => {
           data: payload,
         }
       })
-      .action('network-error', payload => {
+      .action('network-error', (payload) => {
         networkError = payload
         return {
           code: 0,

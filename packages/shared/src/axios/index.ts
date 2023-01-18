@@ -17,7 +17,7 @@ class AxiosInstanceManager {
     this.instance = axios.create({ baseURL })
 
     // request interceptor
-    this.instance.interceptors.request.use(config => {
+    this.instance.interceptors.request.use((config) => {
       // process request headers
       config = processRequestHeaders(config)
 
@@ -25,7 +25,7 @@ class AxiosInstanceManager {
     })
 
     // response interceptor
-    this.instance.interceptors.response.use(response => {
+    this.instance.interceptors.response.use((response) => {
       // Network Error
       if (!String(response.status).startsWith('2')) {
         return Promise.reject(

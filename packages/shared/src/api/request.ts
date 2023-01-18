@@ -23,11 +23,11 @@ class Request {
     params?: Record<string, string | number>,
     responsePreprocessor?: ResponsePreprocessor<ResponseData>,
   ): Promise<UnifiedResult<ResponseData>> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.axiosInstanceManager
         .getInstance()
         .request({ url, method, data: body, params })
-        .then(axiosResponse => {
+        .then((axiosResponse) => {
           let businessResponse: BusinessResponse<ResponseData> =
             axiosResponse.data
 
@@ -36,7 +36,7 @@ class Request {
 
           resolve([null, businessResponse])
         })
-        .catch(reason => {
+        .catch((reason) => {
           resolve([reason, undefined])
         })
     })

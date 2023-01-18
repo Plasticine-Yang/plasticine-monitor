@@ -14,7 +14,7 @@ type ActionsType = {
 }
 
 const actions: ActionsType = {
-  'report-error': async payload => {
+  'report-error': async (payload) => {
     return api.error.reportError(payload)
   },
 }
