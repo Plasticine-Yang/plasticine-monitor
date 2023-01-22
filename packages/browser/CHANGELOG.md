@@ -1,5 +1,12 @@
 # @plasticine-monitor/browser
 
+## 0.0.4
+
+### Patch Changes
+
+- feat(browser): support monitor resource error
+- feat(browser): support monitor promise error
+
 ## 0.0.3
 
 ### Patch Changes
