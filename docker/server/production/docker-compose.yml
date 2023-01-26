@@ -1,0 +1,32 @@
+services:
+  monitor-server:
+    container_name: monitor-server
+    build:
+      context: ../../../packages/server
+      dockerfile: development.Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - mysql
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: monitor-mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    volumes:
+      - monitor-server-mysql:/var/lib/mysql:rw
+    networks:
+      - mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: monitor-server
+
+networks:
+  mysql:
+
+
+volumes:
+  monitor-server-mysql:

@@ -6,9 +6,9 @@
   "author": "Plasticine-Yang",
   "license": "MIT",
   "scripts": {
-    "build": "nest build",
-    "env:start": "docker compose -f ./docker-compose.dev.yaml up -d",
-    "env:stop": "docker compose -f ./docker-compose.dev.yaml down",
+    "build": "cross-env NODE_ENV=production nest build",
+    "build:docker": "docker build docker/production -t monitor-server",
+    "deploy": "docker compose -f docker/production/docker-compose.yml up -d",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",

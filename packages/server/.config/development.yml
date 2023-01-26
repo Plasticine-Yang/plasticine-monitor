@@ -1,0 +1,7 @@
+mysql:
+  host: mysql-development
+  port: 3307
+  username: root
+  password: root
+  database: monitor-server
+  synchronize: true
