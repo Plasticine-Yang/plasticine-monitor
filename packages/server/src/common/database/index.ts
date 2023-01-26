@@ -1,2 +1,1 @@
-export { RedisModule } from './redis'
-export { MySQLModule } from './mysql'
+export { DatabaseModule } from './database.module'

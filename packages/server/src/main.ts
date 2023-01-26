@@ -1,41 +1,48 @@
 import { ValidationPipe, VersioningType } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
-import { NestFastifyApplication } from '@nestjs/platform-fastify'
-
-import { AllExceptionFilter } from './common/filters/base.exception.filter'
-import { HttpExceptionFilter } from './common/filters/http.exception.filter'
-import { TransformInterceptor } from './common/interceptors/transform.interceptor'
-import { fastifyAdaptor } from './common/fasify'
+import { Logger } from 'nestjs-pino'
 
 import { AppModule } from './app.module'
 
-import { setupDocument } from './docs'
+import {
+  BusinessHttpExceptionFilter,
+  UncaughtExceptionFilter,
+} from './common/exception-filters'
+import { BusinessResponseInterceptor } from './common/interceptors'
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    fastifyAdaptor,
-  )
+  const app = await NestFactory.create(AppModule)
 
-  // 接口版本化管理
+  // api 前缀
+  app.setGlobalPrefix('api')
+
+  // api 版本管理
   app.enableVersioning({
+    // 以类似 URI: /api/v1 的方式进行版本管理
     type: VersioningType.URI,
     defaultVersion: '1',
   })
 
-  // 统一响应体
-  app.useGlobalInterceptors(new TransformInterceptor())
+  // 日志
+  app.useLogger(app.get(Logger))
 
-  // 全局拦截异常
-  app.useGlobalFilters(new AllExceptionFilter(), new HttpExceptionFilter())
+  // 异常处理
+  app.useGlobalFilters(
+    // 处理未捕获的异常
+    new UncaughtExceptionFilter(),
+
+    // 处理业务异常
+    new BusinessHttpExceptionFilter(),
+  )
+
+  app.useGlobalInterceptors(
+    // 业务统一响应体
+    new BusinessResponseInterceptor(),
+  )
 
   // 全局字段校验
   app.useGlobalPipes(new ValidationPipe())
 
-  // Swagger 文档
-  setupDocument(app)
-
   await app.listen(3000)
 }
-
 bootstrap()

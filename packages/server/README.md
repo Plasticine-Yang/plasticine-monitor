@@ -1,33 +1,17 @@
-# @plasticine-monitor/server
+# nest-demo
 
-前端监控系统后端服务
+## 开发环境准备
 
-## Usage
-
-### 1. config
-
-You should config your database and other info in the `.config` directory in your project root directory.
-
-For example, create `.config/.development.yaml`, and write the database configuration:
-
-```yaml
-# mongodb
-MONGODB_CONFIG:
-  host: localhost
-  port: 27017
-  username: xxx
-  password: xxx
-  type: mongodb
-  database: nest_gateway
-  entities: mongo
-  logging: false
-  synchronize: true
-```
-
-### 2. deploy
+使用 `docker-compose` 完成开发环境的搭建，比如 MySQL 数据库
 
 ```shell
-pnpm build:server
+# 启动开发环境
+pnpm env:start
+
+# 停止开发环境
+pnpm env:stop
 ```
 
-将构建产物放到服务器上，通过 `node src/main.js` 启动即可
+## 配置文件
+
+项目根目录下创建 `.confgi` 目录，里面编写对应环境的配置文件，比如 `development.yaml` 或 `development.yml`
