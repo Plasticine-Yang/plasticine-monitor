@@ -95,6 +95,8 @@
 
 ## Usage
 
+### 开发环境
+
 1. 启动后端服务器开发环境：
 
 ```shell
@@ -109,13 +111,31 @@ pnpm build
 
 3. 启动 playground 项目进行体验
 
-开发环境
-
 ```shell
 pnpm play
 ```
 
-生产环境
+使用 mock 数据
+
+```shell
+pnpm play:mock
+```
+
+### 生产环境
+
+1. 部署服务器
+
+```shell
+pnpm deploy:server
+```
+
+2. 安装并配置 sdk
+
+```shell
+pnpm i @plasticine-monitor/browser
+```
+
+可以参考 playground 项目的生产环境使用
 
 ```shell
 pnpm play:prod
