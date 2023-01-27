@@ -52,3 +52,11 @@ mysql:
 ### 可配置项
 
 可到 `src/types/config.ts` 中查看配置文件支持的配置项类型声明
+
+## scripts
+
+- nest generator
+
+```shell
+pnpm nest g res xxx modules
+```

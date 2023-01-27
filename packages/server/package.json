@@ -16,6 +16,7 @@
     "deploy": "pnpm build:dist && pnpm build:image && docker compose -f docker-compose.prod.yml up -d",
     "deploy:up": "docker compose -f docker-compose.prod.yml up",
     "deploy:down": "docker compose -f docker-compose.prod.yml down",
+    "nest": "nest",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier -w",
     "format:src": "prettier -w src",
