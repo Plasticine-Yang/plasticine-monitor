@@ -2,8 +2,7 @@ services:
   monitor-server:
     container_name: monitor-server
     build:
-      context: ../../../packages/server
-      dockerfile: development.Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4000:4000"
     networks:

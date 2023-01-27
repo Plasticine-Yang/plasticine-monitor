@@ -1,0 +1,14 @@
+services:
+  monitor-mysql-development:
+    container_name: monitor-mysql-development
+    image: mysql:8.0
+    ports:
+      - 3307:3306
+    volumes:
+      - monitor-server-mysql-development:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: monitor-server
+
+volumes:
+  monitor-server-mysql-development:
