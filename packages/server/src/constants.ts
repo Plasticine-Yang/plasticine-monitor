@@ -1,6 +1,6 @@
 import { ApiCodeDescription } from './decorators'
 
-export class API_CODE {
+export class API_CODES {
   @ApiCodeDescription('api 正常响应码')
   static SUCCESS = 0
 

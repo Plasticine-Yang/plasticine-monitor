@@ -8,7 +8,7 @@ import type { BusinessResponse } from 'src/types'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-import { API_CODE } from 'src/constants'
+import { API_CODES } from 'src/constants'
 
 /**
  * @description 业务统一响应体拦截器
@@ -22,7 +22,7 @@ class BusinessResponseInterceptor<T>
   ): Observable<BusinessResponse<T>> {
     return next.handle().pipe<BusinessResponse<T>>(
       map((data) => ({
-        code: API_CODE.SUCCESS,
+        code: API_CODES.SUCCESS,
         message: 'success',
         data,
       })),

@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { FindOptionsWhere, Like, Repository } from 'typeorm'
 
 import { BusinessHttpException } from 'src/common/exceptions'
-import { API_CODE } from 'src/constants'
+import { API_CODES } from 'src/constants'
 
 import { CreatePostDto } from './dto/create-post.dto'
 import { UpdatePostDto } from './dto/update-post.dto'
@@ -23,7 +23,7 @@ export class PostService {
 
     if (post) {
       throw new BusinessHttpException(
-        API_CODE.ENTITY_DUPLICATED,
+        API_CODES.ENTITY_DUPLICATED,
         `标题为: '${title}' 的文章已存在，请勿重复创建`,
       )
     }
@@ -53,7 +53,7 @@ export class PostService {
       return this.postRepository.findOneByOrFail({ id })
     } catch (error) {
       throw new BusinessHttpException(
-        API_CODE.ENTITY_NOT_EXIST,
+        API_CODES.ENTITY_NOT_EXIST,
         `文章不存在 -- ${error}`,
         {
           httpStatusCode: HttpStatus.BAD_REQUEST,
