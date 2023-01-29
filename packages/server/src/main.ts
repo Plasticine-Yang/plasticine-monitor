@@ -1,17 +1,31 @@
 import { ValidationPipe, VersioningType } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import { Logger } from 'nestjs-pino'
 
 import { AppModule } from './app.module'
-
 import {
   BusinessHttpExceptionFilter,
   UncaughtExceptionFilter,
 } from './common/exception-filters'
 import { BusinessResponseInterceptor } from './common/interceptors'
+import { PlasticineMonitorServerConfig } from './types'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+
+  // 配置信息
+  const configService: ConfigService<PlasticineMonitorServerConfig> =
+    app.get(ConfigService)
+
+  const port = configService.get('app.port', { infer: true })
+
+  if (port === undefined) {
+    throw new Error("Can't find port to bind the server in configuration file.")
+  }
+
+  // 日志
+  const logger = app.get(Logger)
 
   // api 前缀
   app.setGlobalPrefix('api')
@@ -24,7 +38,7 @@ async function bootstrap() {
   })
 
   // 日志
-  app.useLogger(app.get(Logger))
+  app.useLogger(logger)
 
   // 异常处理
   app.useGlobalFilters(
@@ -43,6 +57,8 @@ async function bootstrap() {
   // 全局字段校验
   app.useGlobalPipes(new ValidationPipe())
 
-  await app.listen(3000)
+  await app.listen(port)
+
+  logger.log(`Server listening on http://localhost:${port}`)
 }
 bootstrap()

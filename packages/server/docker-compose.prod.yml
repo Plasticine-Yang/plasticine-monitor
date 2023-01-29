@@ -1,31 +1,53 @@
+version: '3.8'
+
 services:
+  # server
   monitor-server:
-    container_name: monitor-server
+    container_name: plasticine-monitor-server
     build:
       dockerfile: Dockerfile
     ports:
       - "4000:4000"
     networks:
       - mysql
+      - redis
     depends_on:
       - mysql
+      - redis
 
+  # MySQL
   mysql:
-    container_name: monitor-mysql
+    container_name: plasticine-monitor-mysql
     image: mysql:8.0
     ports:
       - 3306:3306
     volumes:
-      - monitor-server-mysql:/var/lib/mysql:rw
+      - mysql-data:/var/lib/mysql:rw
     networks:
       - mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: monitor-server
+      MYSQL_DATABASE: plasticine-monitor-server
+
+  # Redis
+  redis:
+    container_name: plasticine-monitor-redis
+    image: redis:7.0.8
+    ports:
+      - 6379:6379
+    networks:
+      - redis
+    volumes:
+      - redis-data:/data:rw
 
 networks:
   mysql:
+  redis:
 
 
 volumes:
-  monitor-server-mysql:
+  mysql-data:
+    name: plasticine-monitor-server-mysql-data
+
+  redis-data:
+    name: plasticine-monitor-server-redis-data

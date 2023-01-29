@@ -1,6 +1,4 @@
-import type { DatabaseConfig, EnvironmentVariables } from 'src/types'
-
-import { DataSource } from 'typeorm'
+import type { DatabaseConfig, PlasticineMonitorServerConfig } from 'src/types'
 
 import {
   ConfigurableModuleBuilder,
@@ -31,7 +29,9 @@ export class DatabaseModule extends ConfigurableModuleClass {
       inject: [ConfigService],
 
       /** @description Load database configuration. */
-      useFactory: (configService: ConfigService<EnvironmentVariables>) => {
+      useFactory: (
+        configService: ConfigService<PlasticineMonitorServerConfig>,
+      ) => {
         let databaseConfig: DatabaseConfig | undefined
 
         switch (type) {

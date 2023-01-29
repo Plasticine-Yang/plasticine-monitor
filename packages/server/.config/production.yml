@@ -1,7 +1,10 @@
+app:
+  port: 4000
+
 mysql:
   host: mysql
   port: 3306
   username: root
   password: root
-  database: monitor-server
+  database: plasticine-monitor-server
   synchronize: true

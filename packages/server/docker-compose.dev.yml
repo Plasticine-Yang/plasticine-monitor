@@ -1,14 +1,30 @@
+version: '3.8'
+
 services:
-  monitor-mysql-development:
-    container_name: monitor-mysql-development
+  # MySQL
+  mysql:
+    container_name: plasticine-monitor-mysql-dev
     image: mysql:8.0
     ports:
       - 3307:3306
     volumes:
-      - monitor-server-mysql-development:/var/lib/mysql:rw
+      - mysql-data-dev:/var/lib/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: monitor-server
+      MYSQL_DATABASE: plasticine-monitor-server
+
+  # Redis
+  redis:
+    container_name: plasticine-monitor-redis-dev
+    image: redis:7.0.8
+    ports:
+      - 6380:6379
+    volumes:
+      - redis-data-dev:/data:rw
 
 volumes:
-  monitor-server-mysql-development:
+  mysql-data-dev:
+    name: plasticine-monitor-mysql-data-dev
+
+  redis-data-dev:
+    name: plasticine-monitor-redis-data-dev

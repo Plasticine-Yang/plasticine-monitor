@@ -17,6 +17,8 @@
     "dev:server:up": "pnpm -C packages/server dev:up",
     "dev:server:down": "pnpm -C packages/server dev:down",
     "deploy:server": "pnpm -C packages/server run deploy",
+    "deploy:server:start": "pnpm -C packages/server run deploy:start",
+    "deploy:server:stop": "pnpm -C packages/server run deploy:stop",
     "deploy:server:up": "pnpm -C packages/server run deploy:up",
     "deploy:server:down": "pnpm -C packages/server run deploy:down",
     "server:nest": "pnpm -C packages/server nest",

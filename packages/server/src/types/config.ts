@@ -1,5 +1,10 @@
-export interface EnvironmentVariables {
+export interface PlasticineMonitorServerConfig {
+  app: AppConfig
   mysql: MySQLConfig
+}
+
+export interface AppConfig {
+  port: number
 }
 
 export interface MySQLConfig {
