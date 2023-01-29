@@ -45,10 +45,10 @@ importers:
   packages/browser:
     specifiers:
       '@plasticine-monitor/core': workspace:*
-      '@plasticine-monitor/shared': workspace:*
+      axios: ^1.2.2
     dependencies:
       '@plasticine-monitor/core': link:../core
-      '@plasticine-monitor/shared': link:../shared
+      axios: 1.2.2
 
   packages/core:
     specifiers: {}

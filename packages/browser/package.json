@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "@plasticine-monitor/core": "workspace:*",
-    "@plasticine-monitor/shared": "workspace:*"
+    "axios": "^1.2.2"
   },
   "scripts": {
     "build": "unbuild",

@@ -2,7 +2,7 @@ import type { ActionsType } from './actions'
 import type { WebSDKConfig } from './config'
 
 import { Core } from '@plasticine-monitor/core'
-import { axiosInstanceManager } from '@plasticine-monitor/shared'
+import { axiosInstanceManager } from './axios'
 
 import { defaultWebSDKConfig } from './config'
 import { errorMonitorPlugin } from './plugins'

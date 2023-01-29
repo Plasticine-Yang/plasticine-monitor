@@ -1,6 +1,6 @@
-import type { BusinessResponse, WebReport } from '@plasticine-monitor/shared'
+import type { BusinessResponse, WebReport } from './api'
 
-import { api } from '@plasticine-monitor/shared'
+import { api } from './api'
 
 type ReportActionType = 'report-js-error'
 

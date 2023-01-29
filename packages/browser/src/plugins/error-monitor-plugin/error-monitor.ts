@@ -1,4 +1,4 @@
-import { WebSDK } from '@/sdk'
+import { WebSDK } from '../../sdk'
 import { WebReport } from 'packages/shared/src/api/types/reports/event'
 
 class ErrorMonitor {
