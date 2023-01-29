@@ -1,11 +1,10 @@
-import * as apiJSError from './business/js-error'
+import { reportJSError } from './business/report'
 
 const api = {
-  jsError: apiJSError,
+  reportJSError,
 }
 
 export { api }
 
 export * from './constants'
 export * from './types'
-export * from './routes'

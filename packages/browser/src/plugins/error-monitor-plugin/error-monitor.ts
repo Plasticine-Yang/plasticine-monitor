@@ -1,11 +1,10 @@
 import { WebSDK } from '@/sdk'
-import { JSErrorPayload } from '@plasticine-monitor/shared'
+import { WebReport } from 'packages/shared/src/api/types/reports/event'
 
 class ErrorMonitor {
   constructor(private webSDK: WebSDK) {
     this.initJSErrorMonitor()
     this.initPromiseErrorMonitor()
-    this.initResourceErrorMonitor()
   }
 
   /**
@@ -14,15 +13,18 @@ class ErrorMonitor {
   initJSErrorMonitor() {
     window.addEventListener('error', (ev) => {
       // 生成错误上报 payload
-      const payload: JSErrorPayload = {
-        error: {
-          name: ev.type,
-          message: ev.message,
-          stacktrace: ev.error.stack ?? 'stacktrace',
+      const jsErrorReport: WebReport = {
+        eventType: 'js-error',
+        payload: {
+          error: {
+            name: ev.type,
+            message: ev.message,
+            stacktrace: ev.error.stack ?? 'stacktrace',
+          },
         },
       }
 
-      this.webSDK.sender.send('report-js-error', payload)
+      this.webSDK.sender.send('report-js-error', jsErrorReport)
     })
   }
 
@@ -32,37 +34,18 @@ class ErrorMonitor {
   initPromiseErrorMonitor() {
     window.addEventListener('unhandledrejection', (ev) => {
       // 生成错误上报 payload
-      const payload: JSErrorPayload = {
-        error: {
-          name: ev.type,
-          message: ev.reason,
+      const jsErrorReport: WebReport = {
+        eventType: 'js-error',
+        payload: {
+          error: {
+            name: ev.type,
+            message: ev.reason,
+          },
         },
       }
 
-      this.webSDK.sender.send('report-js-error', payload)
+      this.webSDK.sender.send('report-js-error', jsErrorReport)
     })
-  }
-
-  /**
-   * @description 监控资源加载错误
-   */
-  initResourceErrorMonitor() {
-    window.addEventListener(
-      'error',
-      (ev) => {
-        // 生成错误上报 payload
-        const payload: JSErrorPayload = {
-          error: {
-            name: ev.type,
-            message: ev.message,
-            stacktrace: 'stack',
-          },
-        }
-
-        this.webSDK.sender.send('report-js-error', payload)
-      },
-      { capture: true },
-    )
   }
 }
 

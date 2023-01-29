@@ -1,7 +1,12 @@
-/**
- * @description js error payload
- */
-export interface JSErrorPayload {
+import { Common } from './common'
+
+export interface JSErrorReport {
+  eventType: 'js-error'
+  payload: JSErrorPayload
+  common: Common
+}
+
+interface JSErrorPayload {
   error: JSError
 }
 
