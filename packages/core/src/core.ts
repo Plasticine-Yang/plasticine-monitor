@@ -25,8 +25,10 @@ class Core<
   /**
    * @description 注册插件
    */
-  public use(plugin: Plugin<typeof this>) {
-    plugin.install(this)
+  public use(...plugins: Plugin<typeof this>[]) {
+    plugins.forEach((plugin) => {
+      plugin.install(this)
+    })
   }
 }
 
