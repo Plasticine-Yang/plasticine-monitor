@@ -1,5 +1,5 @@
 import { WebSDK } from '../../sdk'
-import { WebReport } from 'packages/shared/src/api/types/reports/event'
+import { WebReport } from '../../api'
 
 class ErrorMonitor {
   constructor(private webSDK: WebSDK) {
@@ -24,7 +24,7 @@ class ErrorMonitor {
         },
       }
 
-      this.webSDK.sender.send('report-js-error', jsErrorReport)
+      this.webSDK.sender.send('report', jsErrorReport)
     })
   }
 
@@ -44,7 +44,7 @@ class ErrorMonitor {
         },
       }
 
-      this.webSDK.sender.send('report-js-error', jsErrorReport)
+      this.webSDK.sender.send('report', jsErrorReport)
     })
   }
 }
