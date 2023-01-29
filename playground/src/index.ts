@@ -6,6 +6,7 @@ import { setupErrorMonitor } from './error-monitor'
 import { setupRequestMonitor } from './request-monitor'
 
 new WebSDK({
+  release: '0.0.1',
   senderURL: `${new URL(import.meta.url).origin}/api`,
 })
 
