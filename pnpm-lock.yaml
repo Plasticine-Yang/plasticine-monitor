@@ -51,7 +51,12 @@ importers:
       axios: 1.2.2
 
   packages/core:
-    specifiers: {}
+    specifiers:
+      '@plasticine-monitor/shared': workspace:^0.0.0
+      '@plasticine-monitor/types': workspace:^0.0.0
+    dependencies:
+      '@plasticine-monitor/shared': link:../shared
+      '@plasticine-monitor/types': link:../types
 
   packages/server:
     specifiers:
