@@ -1,5 +1,15 @@
 # @plasticine-monitor/browser
 
+## 0.0.5
+
+### Patch Changes
+
+- refactor(browser): move code of shared package to browser package
+- feat(browser): support report release version and sdk version
+- refactor(browser): refactor structure of report api
+- Updated dependencies
+  - @plasticine-monitor/core@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes
