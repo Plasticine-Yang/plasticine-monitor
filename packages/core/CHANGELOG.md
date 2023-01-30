@@ -1,5 +1,11 @@
 # @plasticine-monitor/core
 
+## 0.0.5
+
+### Patch Changes
+
+- feat(core): support batch registeration of plugins
+
 ## 0.0.4
 
 ### Patch Changes
