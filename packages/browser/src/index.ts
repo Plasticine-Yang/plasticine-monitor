@@ -1,3 +1,7 @@
-export type { WebSDKConfig } from './config'
+import { init } from './sdk'
 
-export { WebSDK } from './sdk'
+const PlasticineMonitorBrowserClient = {
+  init,
+}
+
+export default PlasticineMonitorBrowserClient
