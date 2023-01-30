@@ -14,5 +14,7 @@
     "paths": {
       "@plasticine-monitor/*": ["packages/*/src"]
     }
-  }
+  },
+  "include": ["packages"],
+  "exclude": ["packages/server"]
 }
