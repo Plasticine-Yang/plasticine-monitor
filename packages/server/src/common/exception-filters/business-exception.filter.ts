@@ -10,9 +10,7 @@ import { BusinessHttpException } from '../exceptions'
  * @description 业务异常过滤器
  */
 @Catch(BusinessHttpException)
-class BusinessHttpExceptionFilter
-  implements ExceptionFilter<BusinessHttpException>
-{
+class BusinessHttpExceptionFilter implements ExceptionFilter<BusinessHttpException> {
   catch(exception: BusinessHttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp()
     const resp = ctx.getResponse<Response>()

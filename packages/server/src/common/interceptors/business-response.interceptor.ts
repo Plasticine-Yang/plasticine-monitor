@@ -1,8 +1,4 @@
-import type {
-  CallHandler,
-  ExecutionContext,
-  NestInterceptor,
-} from '@nestjs/common'
+import type { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common'
 import type { BusinessResponse } from 'src/types'
 
 import { Observable } from 'rxjs'
@@ -13,13 +9,8 @@ import { API_CODES } from 'src/constants'
 /**
  * @description 业务统一响应体拦截器
  */
-class BusinessResponseInterceptor<T>
-  implements NestInterceptor<T, BusinessResponse<T>>
-{
-  intercept(
-    _: ExecutionContext,
-    next: CallHandler<T>,
-  ): Observable<BusinessResponse<T>> {
+class BusinessResponseInterceptor<T> implements NestInterceptor<T, BusinessResponse<T>> {
+  intercept(_: ExecutionContext, next: CallHandler<T>): Observable<BusinessResponse<T>> {
     return next.handle().pipe<BusinessResponse<T>>(
       map((data) => ({
         code: API_CODES.SUCCESS,

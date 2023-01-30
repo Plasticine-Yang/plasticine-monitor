@@ -4,10 +4,7 @@ import { NestFactory } from '@nestjs/core'
 import { Logger } from 'nestjs-pino'
 
 import { AppModule } from './app.module'
-import {
-  BusinessHttpExceptionFilter,
-  UncaughtExceptionFilter,
-} from './common/exception-filters'
+import { BusinessHttpExceptionFilter, UncaughtExceptionFilter } from './common/exception-filters'
 import { BusinessResponseInterceptor } from './common/interceptors'
 import { PlasticineMonitorServerConfig } from './types'
 
@@ -15,8 +12,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
   // 配置信息
-  const configService: ConfigService<PlasticineMonitorServerConfig> =
-    app.get(ConfigService)
+  const configService: ConfigService<PlasticineMonitorServerConfig> = app.get(ConfigService)
 
   const port = configService.get('app.port', { infer: true })
 
