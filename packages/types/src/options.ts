@@ -1,38 +1,14 @@
-import type { Integration } from './integration'
+import type { Plugin } from './plugin'
 
+/**
+ * @description 实例化 SDK client 的 options
+ */
 export interface ClientOptions {
-  /**
-   * @description
-   * Its full name is `data source name`, which used to connect to plasticine-monitor
-   * and identify the project.
-   */
-  dsn?: string
-
-  /**
-   * @description The maximum number of breadcrumbs sent with events.
-   * @default 100
-   */
-  maxBreadcrumbs?: number
-
-  /**
-   * @description List of integrations that should be installed after SDK initialized.
-   */
-  integrations: Integration[]
-
-  /**
-   * @description Enable log to console functionality of SDK itself.
-   */
-  debug?: boolean
+  /** @description 插件 */
+  plugins: Plugin[]
 }
 
 /**
- * @description Base configuration options for every SDK.
+ * @description 初始化 SDK 的 options
  */
-export interface Options extends Partial<ClientOptions> {
-  /**
-   * @description
-   * If this is set to false, default integrations will not to be added, otherwise this will internally to be set to the
-   * recommended default integrations.
-   */
-  defaultIntegrations?: false | Integration[]
-}
+export type Options = Partial<ClientOptions>
