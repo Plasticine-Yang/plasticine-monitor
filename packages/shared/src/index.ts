@@ -1,1 +1,1 @@
-export { GLOBAL_OBJECT, getGlobalSingleton } from './global-object'
+export { getOrCreateSingletonOnGlobalObject } from './global-object'

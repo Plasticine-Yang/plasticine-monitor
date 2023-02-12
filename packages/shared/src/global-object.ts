@@ -1,25 +1,10 @@
-/**
- * @description Internal global object with common properties and `__PLASTICINE_MONITOR__`.
- */
 interface InternalGlobalObject {
-  /**
-   * @description
-   * DSN to use when client doesn't pass the dsn option.
-   *
-   * It's value will be set from environment variables when building.
-   */
-  PLASTICINE_MONITOR_DSN?: string
-
-  /** @description The global object for plasticine-monitor runtime.  */
   __PLASTICINE_MONITOR__: {
-    hub: any
+    hub?: any
   }
 }
 
-/**
- * @description The global object in current Javascript runtime.
- */
-const GLOBAL_OBJECT: InternalGlobalObject =
+export const GLOBAL_OBJECT: InternalGlobalObject =
   (typeof globalThis === 'object' && globalThis) ||
   (typeof window === 'object' && window) ||
   (typeof self === 'object' && self) ||
@@ -31,26 +16,21 @@ const GLOBAL_OBJECT: InternalGlobalObject =
 
 /**
  * @description
- * Returns a singleton contained in the global `__PLASTICINE_MONITOR__` object.
+ * 从全局对象的 `__PLASTICINE_MONITOR__` 中获取全局单例值，尽量避免直接通过 GLOBAL_OBJECT 获取值
+ * 因为 GLOBAL_OBJECT.__PLASTICINE_MONITOR__ 可能为 undefined
+ * 通过该函数去获取能够保证其不为 undefined
  *
- * If the singleton doesn't already exist in `__PLASTICINE_MONITOR__`, it will be created using the given factory
- * function and added to the `__PLASTICINE_MONITOR__` object.
- *
- * @param name The name of global singleton on `__PLASTICINE_MONITOR__`
- * @param creator The creator factory function to create the singleton if it doesn't already exist on `__PLASTICINE_MONITOR__`
- * @returns The singleton
+ * @param factory 待获取的属性不存在时会调用该工厂函数进行创建
  */
-function getGlobalSingleton<T>(name: keyof InternalGlobalObject['__PLASTICINE_MONITOR__'], creator: () => T) {
-  // Get `__PLASTICINE_MONITOR__` or init `__PLASTICINE_MONITOR__` if it doesn't exist on internalGlobalObject
+export function getOrCreateSingletonOnGlobalObject<T>(
+  key: keyof InternalGlobalObject['__PLASTICINE_MONITOR__'],
+  factory: () => T,
+): T {
+  // 确保全局对象上存在 `__PLASTICINE_MONITOR__`
   const __PLASTICINE_MONITOR__ = (GLOBAL_OBJECT.__PLASTICINE_MONITOR__ = GLOBAL_OBJECT.__PLASTICINE_MONITOR__ || {})
 
-  // Get singleton on the `__PLASTICINE_MONITOR__` or create it by the creator if the name of singleton
-  // doesn't exist on `__PLASTICINE_MONITOR__`
-  const singleton = __PLASTICINE_MONITOR__[name] || (__PLASTICINE_MONITOR__[name] = creator())
+  // 待获取的单例 不存在时则调用工厂函数进行创建
+  const singleton = __PLASTICINE_MONITOR__[key] || (__PLASTICINE_MONITOR__[key] = factory())
 
-  return singleton as T
+  return singleton
 }
-
-export type { InternalGlobalObject as InternalGlobal }
-
-export { GLOBAL_OBJECT, getGlobalSingleton }
