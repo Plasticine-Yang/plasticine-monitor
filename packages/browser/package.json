@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-monitor/browser",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "author": "Plasticine-Yang",
   "description": "SDK in browser environment.",
   "type": "module",
