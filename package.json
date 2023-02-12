@@ -7,9 +7,10 @@
   "type": "module",
   "keywords": [],
   "scripts": {
-    "build": "run-p build:core build:browser",
+    "build": "run-p build:core build:browser build:shared",
     "build:core": "pnpm -C packages/core build",
     "build:browser": "pnpm -C packages/browser build",
+    "build:shared": "pnpm -C packages/shared build",
     "dev:server": "pnpm -C packages/server dev",
     "dev:server:start": "pnpm -C packages/server dev:start",
     "dev:server:stop": "pnpm -C packages/server dev:stop",
