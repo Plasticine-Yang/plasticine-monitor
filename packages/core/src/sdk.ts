@@ -1,24 +1,16 @@
-import type { Client, ClientOptions } from '@plasticine-monitor/types'
+import type { Client, ClientConstructor, ClientOptions } from '@plasticine-monitor/types'
 
 import { getCurrentHub } from './hub'
 
 /**
- * generic I: Client Instance
- *
- * generic O: ClientOption
+ * @description 初始化 Hub 和 Client 并将二者关联
  */
-type ClientClass<I extends Client, O extends ClientOptions> = new (options: O) => I
-
-/**
- * @description Inits Hub and Client instances and bind client instance to hub instance.
- * @param clientClass The class that implements Client interface
- * @param options The options for instantiating clientClass
- */
-export function initAndBind<I extends Client, O extends ClientOptions>(
-  clientClass: ClientClass<I, O>,
-  options: O,
+export function initAndBind<C extends Client, O extends ClientOptions>(
+  clientConstructor: ClientConstructor<C, O>,
+  clientOptions: O,
 ): void {
   const hub = getCurrentHub()
-  const client = new clientClass(options)
+  const client = new clientConstructor(clientOptions)
+
   hub.bindClient(client)
 }
