@@ -1,29 +1,17 @@
 import { defineConfig } from 'vite'
-import dotenv from 'dotenv'
+import react from '@vitejs/plugin-react'
+
 import { resolve } from 'path'
 
-const PROXY_MODE = process.env.PROXY_MODE ?? 'development'
-dotenv.config({
-  path: resolve(
-    process.cwd(),
-    `.env${PROXY_MODE === 'development' ? '' : `.${PROXY_MODE}`}`,
-  ),
-})
+const BASE_DIR = resolve(process.cwd(), 'src/setup/react')
 
-const { PROXY_URL = 'http://localhost:3000/v1' } = process.env
-
+// https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    proxy: {
-      '/api': {
-        target: PROXY_URL,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@components': resolve(BASE_DIR, 'components'),
+      '@utils': resolve(BASE_DIR, 'utils'),
     },
-  },
-
-  build: {
-    sourcemap: true,
   },
 })

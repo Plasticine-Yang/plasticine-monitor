@@ -1,24 +1,23 @@
 {
   "name": "@plasticine-monitor/playground",
-  "version": "0.0.0",
   "private": true,
-  "author": "Plasticine-Yang",
-  "description": "A frontend monitor system.",
   "type": "module",
-  "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "dev:mock": "cross-env PROXY_MODE=mock vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "preview:mock": "cross-env PROXY_MODE=mock vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@plasticine-monitor/browser": "workspace:*"
+    "@plasticine-monitor/browser": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.0.3",
-    "vite": "^4.0.3"
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "sass": "^1.58.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
   }
 }
