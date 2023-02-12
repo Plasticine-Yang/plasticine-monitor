@@ -1,18 +1,19 @@
+import type { Options } from '@plasticine-monitor/types'
+import type { BrowserClientOptions } from './client'
+
 import { initAndBind } from '@plasticine-monitor/core'
 
-import type { BrowserClientOptions, BrowserOptions } from './client'
 import { BrowserClient } from './client'
+import { defaultPlugins } from './plugins'
 
-/**
- * @description The plasticine-monitor browser SDK client.
- */
-function init(options: BrowserOptions) {
+type BrowserOptions = Options
+
+export function init(options: BrowserOptions = {}) {
   const clientOptions: BrowserClientOptions = {
-    ...options,
-    integrations: [],
+    plugins: options.plugins ?? defaultPlugins,
   }
 
   initAndBind(BrowserClient, clientOptions)
-}
 
-export { init }
+  console.log('SDK 初始化完成')
+}
