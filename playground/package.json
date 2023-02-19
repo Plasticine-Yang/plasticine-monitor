@@ -1,21 +1,29 @@
 {
-  "name": "@plasticine-monitor/playground",
+  "name": "sentry-demo",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:sentry": "vite --mode sentry",
+    "dev:mock": "cross-env SHOULD_MOCK=true vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:mock": "cross-env SHOULD_MOCK=true vite preview"
   },
   "dependencies": {
     "@plasticine-monitor/browser": "workspace:*",
+    "@sentry/browser": "^7.36.0",
+    "@sentry/tracing": "^7.36.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/node": "^18.13.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "cross-env": "^7.0.3",
     "sass": "^1.58.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
