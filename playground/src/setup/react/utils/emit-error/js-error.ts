@@ -1,10 +1,10 @@
+import { markFuncStack } from './shared'
+
 export const emitJSError = () => {
   markFuncStack()
 
-  // @ts-ignore
-  undefinedFn()
-}
-
-function markFuncStack() {
-  console.log('markFuncStack')
+  setTimeout(async () => {
+    // @ts-ignore
+    undefinedFn()
+  }, 300)
 }

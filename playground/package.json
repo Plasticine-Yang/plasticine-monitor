@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:sentry": "vite --mode sentry",
     "dev:mock": "cross-env SHOULD_MOCK=true vite",
+    "dev:sentry": "vite --mode sentry",
+    "dev:sentry-mock": "cross-env SHOULD_MOCK=true vite --mode sentry",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "preview:mock": "cross-env SHOULD_MOCK=true vite preview"
