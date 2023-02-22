@@ -52,8 +52,8 @@ importers:
 
   packages/core:
     specifiers:
-      '@plasticine-monitor/shared': workspace:^0.0.0
-      '@plasticine-monitor/types': workspace:^0.0.0
+      '@plasticine-monitor/shared': workspace:^0.1.0
+      '@plasticine-monitor/types': workspace:^0.1.0
     dependencies:
       '@plasticine-monitor/shared': link:../shared
       '@plasticine-monitor/types': link:../types
