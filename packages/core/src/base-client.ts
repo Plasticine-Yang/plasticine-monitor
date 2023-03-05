@@ -1,4 +1,5 @@
-import type { Client, ClientOptions } from '@plasticine-monitor/types'
+import type { Client, ClientOptions, RuntimeException } from '@plasticine-monitor/types'
+import { Event, EventLevel } from 'packages/types/src/event'
 
 import { setupPlugins } from './plugins'
 
@@ -21,4 +22,8 @@ export abstract class BaseClient<O extends ClientOptions> implements Client<O> {
     const { plugins } = this._options
     setupPlugins(plugins)
   }
+
+  public abstract eventFromException(exception: RuntimeException): Event
+
+  public abstract eventFromMessage(message: string, level?: EventLevel | undefined): Event
 }
