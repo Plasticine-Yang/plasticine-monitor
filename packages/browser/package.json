@@ -21,7 +21,9 @@
   ],
   "dependencies": {
     "@plasticine-monitor/core": "workspace:*",
-    "@plasticine-monitor/types": "workspace:*"
+    "@plasticine-monitor/types": "workspace:*",
+    "@plasticine-monitor/shared": "workspace:*",
+    "stacktrace-parser": "^0.1.10"
   },
   "scripts": {
     "build": "unbuild",
