@@ -1,9 +1,9 @@
-import { isDOMException, isError, isErrorEvent } from '@plasticine-monitor/shared'
-import type { EventLevel, RuntimeException } from '@plasticine-monitor/types'
+import sha256 from 'crypto-js/sha256'
 
 import { parse } from 'stacktrace-parser'
 
-import { hash } from './hash'
+import { isDOMException, isError, isErrorEvent } from '@plasticine-monitor/shared'
+import type { EventLevel, RuntimeException } from '@plasticine-monitor/types'
 
 interface GenerateEventIdOptions {
   exception?: RuntimeException
@@ -54,19 +54,19 @@ function generateEventIdFromErrorLike(errorLike: ErrorLike): string {
     column !== null && hashInput.push(String(column))
   })
 
-  return hash(stackframes.join('-'))
+  return sha256(stackframes.join('-')).toString()
 }
 
 function generateEventIdFromMessage(message: string, level: EventLevel): string {
   const hashInput = `${message}-${level}`
 
-  return hash(hashInput)
+  return sha256(hashInput).toString()
 }
 
 function generateRandomEventId() {
   const hashInput = `${Date.now()}-${Math.random()}`
 
-  return hash(hashInput)
+  return sha256(hashInput).toString()
 }
 
 export { generateEventId }

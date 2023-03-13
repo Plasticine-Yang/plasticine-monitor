@@ -21,8 +21,9 @@
   ],
   "dependencies": {
     "@plasticine-monitor/core": "workspace:*",
-    "@plasticine-monitor/types": "workspace:*",
     "@plasticine-monitor/shared": "workspace:*",
+    "@plasticine-monitor/types": "workspace:*",
+    "crypto-js": "^4.1.1",
     "stacktrace-parser": "^0.1.10"
   },
   "scripts": {
@@ -30,5 +31,8 @@
     "stub": "unbuild --stub",
     "type-check": "tsc",
     "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.1.1"
   }
 }

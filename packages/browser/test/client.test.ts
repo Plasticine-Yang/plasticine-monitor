@@ -1,4 +1,3 @@
-import { EventLevelEnum } from '@plasticine-monitor/shared'
 import { BrowserClient } from '../src/client'
 
 describe('BrowserClient', () => {
@@ -15,7 +14,7 @@ describe('BrowserClient', () => {
     const event = browserClient.eventFromException(error)
     expect(event).toMatchInlineSnapshot(`
       {
-        "eventId": "W29iamVjdCBPYmplY3RdLVtvYmplY3QgT2JqZWN0XS1bb2JqZWN0IE9iamVjdF0tW29iamVjdCBPYmplY3RdLVtvYmplY3QgT2JqZWN0XS1bb2JqZWN0IE9iamVjdF0tW29iamVjdCBPYmplY3RdLVtvYmplY3QgT2JqZWN0XS1bb2JqZWN0IE9iamVjdF0tW29iamVjdCBPYmplY3Rd",
+        "eventId": "fdde7e7f828ac4f0043061605e5421f3d848b45b117e2e1c1a77df0a249e6ef7",
         "exception": {
           "type": "Error",
           "value": "foo",
@@ -30,7 +29,7 @@ describe('BrowserClient', () => {
     const event = browserClient.eventFromMessage('hello', 'debug')
     expect(event).toMatchInlineSnapshot(`
       {
-        "eventId": "aGVsbG8tZGVidWc=",
+        "eventId": "bc048e4b260094c7281a371807c5cfaa2018f5d648e93f07be00b27ed30fc205",
         "level": "debug",
         "message": "hello",
       }
