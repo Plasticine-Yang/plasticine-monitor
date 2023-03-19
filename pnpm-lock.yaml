@@ -139,7 +139,10 @@ importers:
       webpack: 5.75.0
 
   packages/shared:
-    specifiers: {}
+    specifiers:
+      '@plasticine-monitor/types': workspace:*
+    dependencies:
+      '@plasticine-monitor/types': link:../types
 
   packages/types:
     specifiers: {}

@@ -34,3 +34,7 @@ export function getOrCreateSingletonOnGlobalObject<T>(
 
   return singleton
 }
+
+export function getGlobalObject<T>(): T & InternalGlobalObject {
+  return GLOBAL_OBJECT as T & InternalGlobalObject
+}

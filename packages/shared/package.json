@@ -25,5 +25,8 @@
     "stub": "unbuild --stub",
     "type-check": "tsc",
     "test": "vitest"
+  },
+  "dependencies": {
+    "@plasticine-monitor/types": "workspace:*"
   }
 }
