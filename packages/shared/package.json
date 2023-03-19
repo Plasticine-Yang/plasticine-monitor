@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-monitor/shared",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Plasticine-Yang",
   "description": "internal utils shared across @plasticine-monitor packages.",
   "type": "module",

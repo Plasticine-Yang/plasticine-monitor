@@ -1,6 +1,6 @@
 {
   "name": "@plasticine-monitor/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Plasticine-Yang",
   "description": "A frontend monitor system.",
   "type": "module",
@@ -25,7 +25,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@plasticine-monitor/shared": "workspace:^0.1.0",
-    "@plasticine-monitor/types": "workspace:^0.1.0"
+    "@plasticine-monitor/shared": "workspace:^0.1.1",
+    "@plasticine-monitor/types": "workspace:^0.1.1"
   }
 }
