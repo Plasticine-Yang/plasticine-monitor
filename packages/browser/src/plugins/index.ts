@@ -1,7 +1,5 @@
 import type { Plugin } from '@plasticine-monitor/types'
 
-import { examplePlugin } from './example-plugin'
+import { errorMonitorPlugin } from './error-monitor'
 
-export { examplePlugin } from './example-plugin'
-
-export const defaultPlugins: Plugin[] = [examplePlugin()]
+export const defaultPlugins: Plugin[] = [errorMonitorPlugin()]
