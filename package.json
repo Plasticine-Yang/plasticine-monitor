@@ -7,14 +7,8 @@
   "type": "module",
   "keywords": [],
   "scripts": {
-    "build": "run-p build:core build:browser build:shared",
-    "build:core": "pnpm -C packages/core build",
-    "build:browser": "pnpm -C packages/browser build",
-    "build:shared": "pnpm -C packages/shared build",
-    "stub": "run-p stub:core stub:browser stub:shared",
-    "stub:core": "pnpm -C packages/core stub",
-    "stub:browser": "pnpm -C packages/browser stub",
-    "stub:shared": "pnpm -C packages/shared stub",
+    "dev": "pnpm run --filter !@plasticine-monitor/server --filter !@plasticine-monitor/playground --parallel dev",
+    "build": "pnpm run --filter !@plasticine-monitor/server --filter !@plasticine-monitor/playground --parallel build",
     "dev:server": "pnpm -C packages/server dev",
     "dev:server:start": "pnpm -C packages/server dev:start",
     "dev:server:stop": "pnpm -C packages/server dev:stop",
@@ -31,9 +25,6 @@
     "test:core": "pnpm -C packages/core test",
     "test:browser": "pnpm -C packages/browser test",
     "test:server": "pnpm -C packages/server test",
-    "type-check:core": "pnpm -C packages/core type-check",
-    "type-check:browser": "pnpm -C packages/browser type-check",
-    "type-check:shared": "pnpm -C packages/shared type-check",
     "lint": "eslint --ext .ts --fix packages",
     "play": "pnpm -C playground dev",
     "play:mock": "pnpm -C playground dev:mock",
@@ -67,9 +58,9 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.1",
     "taze": "^0.8.5",
+    "tsup": "^6.7.0",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4",
-    "unbuild": "^1.0.2",
     "vitest": "^0.26.2"
   }
 }

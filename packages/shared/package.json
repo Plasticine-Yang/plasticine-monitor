@@ -6,12 +6,12 @@
   "type": "module",
   "license": "MIT",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
@@ -21,9 +21,8 @@
     "types"
   ],
   "scripts": {
-    "build": "unbuild",
-    "stub": "unbuild --stub",
-    "type-check": "tsc",
+    "dev": "tsup --watch",
+    "build": "tsup --dts",
     "test": "vitest"
   },
   "dependencies": {
